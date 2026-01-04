@@ -1,5 +1,4 @@
-# Back_End_Track
-This is the back end portion of the Split-Stack Software Engineering Program at UCF
+
 # Welcome to Split Stack: Backend Developer Track
 
 ## What is Split Stack?
