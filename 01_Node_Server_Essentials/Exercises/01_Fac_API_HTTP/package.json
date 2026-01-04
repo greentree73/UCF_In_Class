@@ -1,0 +1,22 @@
+{
+  "name": "http-introduction",
+  "version": "1.0.0",
+  "description": "Intro to APIs and HTTP",
+  "main": "dist/example.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/example.js",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": ["api", "http", "typescript", "learning"],
+  "author": "Split Stack Instructor",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.0",
+    "@types/node": "^20.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}

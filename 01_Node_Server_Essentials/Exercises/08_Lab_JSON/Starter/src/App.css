@@ -1,0 +1,41 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+
+
+/* Styles for the GET example component */
+.app-root {
+  padding: 16px;
+  font-family: sans-serif;
+  text-align: left;
+}
+
+.app-root input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+
+.app-root button {
+  background-color: darkgoldenrod;
+  padding: 8px 12px;
+}
+
+[data-testid="json-output"] {
+  background-color: rgb(160, 149, 149);
+  color: rgb(236, 232, 240);
+  padding: 12px;
+  border-radius: 6px;
+  min-height: 80px;
+  white-space: pre-wrap;
+  font-family: monospace;
+}

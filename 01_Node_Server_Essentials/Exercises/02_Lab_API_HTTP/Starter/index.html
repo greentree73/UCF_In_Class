@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API HTTP Lab - Starter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 The better Getter</h1>
+        
+        <div class="instructions">
+            <h3>📋 Instructions:</h3>
+            <ol>
+                <li>Click the "Fetch Post Data" button below</li>
+                <li>Open Developer Tools (F12) and go to the Network tab</li>
+                <li>Click the button again to see the network request</li>
+                <li>Examine the request details in the Network tab</li>
+                <li>Compare the raw response with the formatted output below</li>
+            </ol>
+        </div>
+
+        <div class="button-container">
+            <button id="fetchBtn" onclick="fetchPost()">Fetch Post Data</button>
+            <button id="clearBtn" onclick="clearOutput()">Clear Output</button>
+        </div>
+
+        <div id="output" class="output">
+            Click "Fetch Post Data" to see the API response...
+        </div>
+    </div>
+<script src="index.js"></script>
+</body>
+</html>
