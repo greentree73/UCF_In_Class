@@ -1,7 +1,7 @@
 {
-  "name": "express-routing-fundamentals",
+  "name": "express-middleware-lab",
   "version": "1.0.0",
-  "description": "Express.js Routing Fundamentals with TypeScript",
+  "description": "Express.js Middleware Lab - Solution",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
@@ -9,7 +9,7 @@
     "start": "node dist/server.js",
     "clean": "rm -rf dist"
   },
-  "keywords": ["express", "typescript", "routing", "rest", "api"],
+  "keywords": ["express", "middleware", "typescript", "nodejs", "backend"],
   "author": "Student",
   "license": "MIT",
   "dependencies": {

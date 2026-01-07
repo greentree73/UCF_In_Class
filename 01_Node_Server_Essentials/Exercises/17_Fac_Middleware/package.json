@@ -1,14 +1,15 @@
 {
-  "name": "express-server-lab-solution",
+  "name": "express-middleware-intro",
   "version": "1.0.0",
-  "description": "Express Server Setup Lab - Starter Code",
+  "description": "Introduction to Express.js Middleware with TypeScript",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "clean": "rm -rf dist"
   },
-  "keywords": ["express", "typescript", "lab", "backend"],
+  "keywords": ["express", "middleware", "typescript", "nodejs", "backend"],
   "author": "Student",
   "license": "MIT",
   "dependencies": {
