@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response, NextFunction } from "express";
 
 // Create Express application instance
 const app = express();
@@ -16,14 +16,18 @@ app.use(express.json());
 let requestCount = 0;
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  // Increment counter with each request
- 
-  
-  // Attach current request number to request object
-  
-  
+  requestCount++;
+  (req as any).requestNumber = requestCount;
   console.log(`Request #${requestCount}: ${req.method} ${req.path}`);
   next();
+});
+
+app.get("/count", (req: Request, res: Response)=>{
+ 
+  res.json({
+    requestNumber: (req as any).requestNumber,
+    totalRequests: requestCount
+  });
 });
 
 // ============================================================================
@@ -34,12 +38,12 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   // Capture start time
   const time = new Date();
   (req as any).time = time;
-  
+
   // Listen for when response finishes
-  res.on('finish', () => { 
+  res.on("finish", () => {
     console.log(`[${time.toISOString()}]`);
   });
-  
+
   next();
 });
 
@@ -50,13 +54,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 /**
  * Home route
  */
-app.get('/', (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   res.json({
-    message: '🎉 Middleware Lab - Solution Complete!',
-    version: '1.0.0',
-    availableRoutes: [
-      'GET / - This message',
-    ],
+    message: "🎉 Middleware Lab - Solution Complete!",
+    version: "1.0.0",
+    availableRoutes: ["GET / - This message"],
   });
 });
 
@@ -65,11 +67,9 @@ app.get('/', (req: Request, res: Response) => {
  */
 app.use((req: Request, res: Response) => {
   res.status(404).json({
-    error: 'Not Found',
+    error: "Not Found",
     message: `Route ${req.method} ${req.path} does not exist`,
-    availableRoutes: [
-      'GET /',
-    ]
+    availableRoutes: ["GET /"],
   });
 });
 
@@ -77,12 +77,12 @@ app.use((req: Request, res: Response) => {
  * Global error handler
  */
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  console.error('[ERROR]', err);
-  
+  console.error("[ERROR]", err);
+
   res.status(500).json({
-    error: 'Internal Server Error',
-    message: err.message || 'Something went wrong',
-    requestNumber: (req as any).requestNumber
+    error: "Internal Server Error",
+    message: err.message || "Something went wrong",
+    requestNumber: (req as any).requestNumber,
   });
 });
 
@@ -91,6 +91,6 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 // ============================================================================
 
 app.listen(PORT, () => {
-  console.log('\n' + '='.repeat(70));
+  console.log("\n" + "=".repeat(70));
   console.log(`✅ Middleware Lab Solution running on http://localhost:${PORT}`);
 });

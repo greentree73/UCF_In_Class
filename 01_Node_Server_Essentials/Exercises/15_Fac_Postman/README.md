@@ -216,7 +216,8 @@ If you have an Express server running locally:
 
 2. **Test Home Route**
    - Method: GET
-   - URL: `http://localhost:3000/`
+   - URL: `http://local
+   host:3000/`
    - Send and verify response
 
 3. **Test API Endpoints**

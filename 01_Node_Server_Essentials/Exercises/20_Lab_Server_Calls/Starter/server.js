@@ -1,29 +1,29 @@
-import express from 'express';
-import axios from 'axios';
+import express from "express";
+import axios from "axios";
 
 const app = express();
-const PORT = 3000;
+const PORT = 8000;
 
 app.use(express.json());
 
 /**
  * TODO: Build a weather proxy API
- * 
+ *
  * Create two endpoints:
- * 
+ *
  * 1. GET /api/weather/:city
  *    - Accept a city name as a parameter
  *    - Make a server-side API call to: https://api.weatherapi.com/v1/current.json
  *    - Use query parameters: key=YOUR_KEY&q={city}
  *    - Extract and return: temperature, condition, humidity
  *    - Handle errors appropriately
- * 
+ *
  * 2. GET /api/github/:username
  *    - Accept a GitHub username as a parameter
  *    - Make a server-side API call to: https://api.github.com/users/{username}
  *    - Extract and return: name, bio, public_repos, followers
  *    - Handle errors appropriately
- * 
+ *
  * BONUS CHALLENGES:
  * - Add response caching to reduce API calls
  * - Validate input parameters before making requests
@@ -32,17 +32,35 @@ app.use(express.json());
  */
 
 // TODO: Implement endpoint 1 - GET /api/weather/:city
-app.get('/api/weather/:city', async (req, res) => {
+app.get("/api/weather/:city", async (req, res) => {
   // Your code here
 });
 
 // TODO: Implement endpoint 2 - GET /api/github/:username
-app.get('/api/github/:username', async (req, res) => {
-  // Your code here
+app.get("/api/github/:username", async (req, res) => {
+  const user = req.params.username;
+  const response = await axios.get(
+    `https://api.github.com/users/${user}`,
+    {
+      headers: {
+        "User-Agent": "Node.js-Server", // GitHub requires a User-Agent header
+      },
+      timeout: 5000,
+    }
+  );
+ 
+  console.log(response);
+  res.send({
+    "message": "route hit",
+    "data": {
+      "username": response.data.login
+    }
+  });
+  console.log(response);
 });
 
 // Home route with instructions
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send(`
     <!DOCTYPE html>
     <html>
@@ -82,5 +100,5 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
-  console.log('📝 Open server.js and complete the TODO comments');
+  console.log("📝 Open server.js and complete the TODO comments");
 });

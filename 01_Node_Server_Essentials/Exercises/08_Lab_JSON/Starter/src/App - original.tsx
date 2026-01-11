@@ -17,16 +17,8 @@ function App(): JSX.Element {
   const extractMonsterInfo = (monsterData: any): string => {
     // TODO: Extract name, hit points, and armor class from monsterData
     // TODO: Return a formatted string like "Ancient Black Dragon - HP: 367, AC: 22"
-  
-    if (!monsterData) return ''
-    console.log(typeof monsterData, monsterData);
-    const name = monsterData.name
-    const hitPoints = monsterData.hit_points
-
-    const armorClass = Array.isArray(monsterData.armor_class)
-     ? monsterData.armor_class[0]?.value
-      : monsterData.armor_class
-    return `${name} - HP: ${hitPoints}, AC: ${armorClass}`
+    
+    return "TODO: Extract monster info here"
   }
 
   // TODO: Step 4 - Create a function to extract user information  
@@ -44,23 +36,8 @@ function App(): JSX.Element {
   const extractComplexInfo = (monsterData: any): string => {
     // TODO: Extract damage_resistances array and join with commas
     // TODO: Get first special ability name and description  
-    if (!monsterData) return ''
-
-   let damageResistances = 'None'
-
-   if (Array.isArray(monsterData.damage_resistances)) {
-    damageResistances = monsterData.damage_resistances.length
-    ? monsterData.damage_resistances.join(', ')
-    : 'None'
-   }else if (monsterData.damage_resistances) {
-    damageResistances = monsterData.damage_resistances
-   }
-
-    const specialAbilities = Array.isArray(monsterData.special_abilities)
-     ? monsterData.special_abilities[0]?.name + ':'+ monsterData.special_abilities[0]?.desc
-     : monsterData.special_abilities
     
-    return `damageResistances: ${damageResistances}, Special Abilities: ${specialAbilities}`
+    return "TODO: Extract complex info here"
   }
 
   const handleFetch = () => { 
@@ -164,7 +141,7 @@ function App(): JSX.Element {
             <h3>Extracted Information:</h3>
             
             {/* TODO: Step 2 - Display extracted monster info */}
-            {url.includes('monsters') && data && 'hit_points' in data && 'armor_class' in data && (
+            {url.includes('monsters') && (
               <div style={{ marginBottom: 8 }}>
                 <strong>Monster:</strong> {extractMonsterInfo(data)}
               </div>
