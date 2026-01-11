@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D&D Spell Lookup</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>🎲 D&D Spell Lookup</h1>
+        <p>Search for spells from the D&D 5e API</p>
+      </header>
+      
+      <main>
+        <div class="search-container">
+          <input 
+            type="text" 
+            id="spellInput" 
+            placeholder="Enter spell name (e.g., fireball, cure-wounds)"
+            value="fireball"
+          />
+          <button id="searchBtn">Search Spell</button>
+        </div>
+        
+        <div id="loading" class="loading hidden">
+          <p>🔮 Searching for spell...</p>
+        </div>
+        
+        <div id="spellResult" class="spell-result">
+          <!-- Spell data will appear here -->
+        </div>
+      </main>
+    </div>
+    
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

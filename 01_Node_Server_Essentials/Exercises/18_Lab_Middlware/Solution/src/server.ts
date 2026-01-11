@@ -1,0 +1,105 @@
+import express, { Request, Response, NextFunction } from 'express';
+
+// Create Express application instance
+const app = express();
+
+// Define the port
+const PORT = process.env.PORT || 3000;
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// ============================================================================
+// EXERCISE 1: REQUEST COUNTER MIDDLEWARE
+// ============================================================================
+
+let requestCount = 0;
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  // Increment counter with each request
+  requestCount++;
+  
+  // Attach current request number to request object
+  (req as any).requestNumber = requestCount;
+  
+  console.log(`Request #${requestCount}: ${req.method} ${req.path}`);
+  next();
+});
+
+// ============================================================================
+// EXERCISE 2: TIMESTAMP MIDDLEWARE
+// ============================================================================
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  // Capture start time
+  const time = new Date();
+  (req as any).time = time;
+  
+  // Listen for when response finishes
+  res.on('finish', () => { 
+    console.log(`[${time.toISOString()}]`);
+  });
+  next();
+});
+
+// ============================================================================
+// ROUTES
+// ============================================================================
+
+
+app.get('/', (req: Request, res: Response) => {
+  res.json({
+    message: '🎉 Middleware Lab - Solution Complete!',
+    version: '1.0.0',
+    availableRoutes: [
+      'GET / - This message',
+      'GET /count - Request counter (Exercise 1)',
+      'GET /timing - Timing information (Exercise 2)',
+    ],
+  });
+});
+
+
+
+app.get('/count', (req, res) => {
+  res.json({
+    requestNumber: (req as any).requestNumber,
+    totalRequests: requestCount
+  });
+});
+
+/**
+ * 404 Not Found handler
+ */
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    error: 'Not Found',
+    message: `Route ${req.method} ${req.path} does not exist`,
+    availableRoutes: [
+      'GET /',
+      'GET /count'
+    ]
+  });
+});
+
+/**
+ * Global error handler
+ */
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  console.error('[ERROR]', err);
+  
+  res.status(500).json({
+    error: 'Internal Server Error',
+    message: err.message || 'Something went wrong',
+    requestNumber: (req as any).requestNumber
+  });
+});
+
+// ============================================================================
+// SERVER STARTUP
+// ============================================================================
+
+app.listen(PORT, () => {
+  console.log('\n' + '='.repeat(70));
+  console.log(`✅ Middleware Lab Solution running on http://localhost:${PORT}`);
+});

@@ -1,0 +1,26 @@
+{
+  "name": "25-fac-env",
+  "version": "1.0.0",
+  "description": "Introduction to environment variables and dotenv",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "environment",
+    "dotenv",
+    "configuration"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
