@@ -1,3 +1,6 @@
+
+
+
 -- adventure.sql
 -- Starter SQL script for the Split Stack "Adventure" schema exercises.
 -- This file creates a database named `adventure`, creates several tables,
