@@ -1,0 +1,21 @@
+{
+  "name": "node-crud-demo",
+  "version": "1.0.0",
+  "description": "Introduction to CRUD operations with PostgreSQL and Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "postgresql",
+    "crud",
+    "node",
+    "database"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
+  }
+}

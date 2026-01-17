@@ -1,0 +1,21 @@
+{
+  "name": "inquirer-intro",
+  "version": "1.0.0",
+  "description": "Introduction to Inquirer.js for interactive CLI prompts",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "inquirer",
+    "cli",
+    "prompts",
+    "interactive"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^9.2.12"
+  }
+}

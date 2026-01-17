@@ -1,0 +1,21 @@
+{
+  "name": "node-joins-lab",
+  "version": "1.0.0",
+  "description": "Lab exercise for SQL joins with PostgreSQL and Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "postgresql",
+    "sql",
+    "joins",
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
+  }
+}

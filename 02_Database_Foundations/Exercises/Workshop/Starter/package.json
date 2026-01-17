@@ -1,0 +1,25 @@
+{
+  "name": "pokemon-card-collection-manager",
+  "version": "1.0.0",
+  "description": "Interactive Pokemon card collection manager using PostgreSQL and Inquirer",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "setup": "psql -U postgres -d pokemon_collection -f schema.sql && psql -U postgres -d pokemon_collection -f seeds.sql"
+  },
+  "keywords": [
+    "pokemon",
+    "cli",
+    "postgresql",
+    "inquirer",
+    "database"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "inquirer": "^9.2.12",
+    "pg": "^8.11.3"
+  }
+}
