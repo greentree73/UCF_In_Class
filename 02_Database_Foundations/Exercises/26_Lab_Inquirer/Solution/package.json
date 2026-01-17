@@ -1,0 +1,20 @@
+{
+  "name": "inquirer-lab",
+  "version": "1.0.0",
+  "description": "Lab activity for practicing Inquirer.js prompts",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "inquirer",
+    "cli",
+    "practice"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^9.2.12"
+  }
+}

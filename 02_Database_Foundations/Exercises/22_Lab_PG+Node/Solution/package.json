@@ -1,0 +1,20 @@
+{
+  "name": "pg-dotenv-lab",
+  "version": "1.0.0",
+  "description": "Lab exercise for securing database credentials with dotenv",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "postgresql",
+    "dotenv",
+    "security"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3"
+  }
+}
