@@ -73,3 +73,6 @@ SELECT * FROM users ORDER BY id;
 
 -- Show all orders
 SELECT * FROM orders ORDER BY user_id, order_date;
+
+--show all user orders
+select u.name AS user_name, u.email AS user_email, o.product_name, o.amount, o.order_date from users u inner join orders o on u.id = o.user_id order by name, order_date;

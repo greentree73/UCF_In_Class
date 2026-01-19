@@ -1,6 +1,8 @@
 // Import the inquirer package
 // Remember: Inquirer v9+ requires ES modules
 import inquirer from 'inquirer';
+import chalk from 'chalk';
+import CliTable3 from 'cli-table3';
 
 // ============================================
 // User Profile Setup - Practice Activity
@@ -20,8 +22,19 @@ async function getUserProfile() {
       // - type: 'input'
       // - name: 'fullName'
       // - message: Ask for their full name
+      
+      
       {
-        // Your code here
+        type: 'input',
+        name: 'fullName',
+        message: 'Enter your full name:',
+        validate: (input) => {
+          if (input.trim() === '') {
+            return 'Full name is required.';
+          }
+          return true;
+        },
+        
       },
       
       // TODO 2: Create a LIST question for favorite color
@@ -31,6 +44,11 @@ async function getUserProfile() {
       // - choices: ['Red', 'Blue', 'Green', 'Yellow', 'Purple']
       {
         // Your code here
+        type: 'list',
+        name: 'favoriteColor',
+        message: 'Enter your favorite color:',
+        choices: ['Red', 'Blue', 'Green', 'Yellow', 'Purple']
+        
       },
       
       // TODO 3: Create a CONFIRM question for newsletter subscription
@@ -38,7 +56,10 @@ async function getUserProfile() {
       // - name: 'subscribe'
       // - message: Ask if they want to subscribe to the newsletter
       {
-        // Your code here
+        type: 'confirm',            // Creates a yes/no question
+        name: 'subscribe',      // Key name for this answer
+        message: 'Do you want to subscribe to the newsletter?',
+        default: true
       }
       
     ]);

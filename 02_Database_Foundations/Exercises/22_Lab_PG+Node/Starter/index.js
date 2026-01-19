@@ -1,16 +1,17 @@
 // TODO: Step 3 - Import and configure dotenv here
-// Add: require('dotenv').config();
+require('dotenv').config();
+
 
 const { Pool } = require('pg');
 
 // TODO: Step 4 - Update this configuration to use environment variables
 // Replace the hardcoded values with process.env.VARIABLE_NAME
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'node_pg_demo',
-  password: 'your_password',  // ⚠️ HARDCODED - Not secure!
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 // Function to get all users from the database

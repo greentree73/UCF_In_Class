@@ -1,6 +1,7 @@
 // Import the database client from our db.js file
 const client = require('./db');
 
+
 // This is an async function that will handle all our database operations
 // We use async/await because database operations take time to complete
 async function main() {

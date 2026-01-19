@@ -38,10 +38,8 @@ const pool = new Pool({
 // https://www.postgresql.org/docs/current/tutorial-join.html
 async function getUsersWithOrders() {
   // TODO: Write your JOIN query here
-  const query = `
-    -- Your SQL JOIN query goes here
-  `;
-  
+  const query = 'select u.name AS user_name, u.email AS user_email, o.product_name, o.amount, o.order_date from users u inner join orders o on u.id = o.user_id order by name, order_date;';
+      
   try {
     console.log('🔍 Fetching users with their orders...\n');
     

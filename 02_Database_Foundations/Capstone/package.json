@@ -1,0 +1,18 @@
+{
+  "name": "capstone",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "This week's capstone: build a Node.js command-line application \"Knights Quest\" that helps a player build quests by querying a Postgres database.",
+  "main": "src/cli.js",
+  "scripts": {
+    "start": "node src/cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "inquirer": "^13.2.0",
+    "pg": "^8.17.1"
+  }
+}

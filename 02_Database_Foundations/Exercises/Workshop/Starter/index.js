@@ -70,6 +70,8 @@ async function loginUser() {
     // #1. ToDo
     // Check if user exists
     // query the db for a user with this username and save it as "result"
+    const checkUserQuery = "SELECT * FROM users WHERE username = $1";
+    const result = await pool.query(checkUserQuery, [answers.username]);
 
     if (result.rows.length > 0) {
       // User exists - verify password
@@ -87,7 +89,12 @@ async function loginUser() {
     } else {
       // User doesn't exist - create new account
       // #2. ToDo Create an insert into the db table to save this User
-      
+       const createUserQuery =
+         "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *";
+       const newUser = await pool.query(createUserQuery, [
+         answers.username,
+         answers.password,
+       ]);
       currentUser = newUser.rows[0];
       console.log(`\n✅ Account created! Welcome, ${currentUser.username}!\n`);
       return true;
@@ -109,6 +116,8 @@ async function addCardToCollection() {
   try {
     // Get all Pokemon cards
     //#3 ToDo Create a query to get all the Cards save as "cardsResult"
+     const cardsQuery = 'SELECT * FROM pokemon_cards ORDER BY name';
+    const cardsResult = await pool.query(cardsQuery);
 
     if (cardsResult.rows.length === 0) {
       console.log('\n⚠️ No Pokemon cards available in the database.\n');
