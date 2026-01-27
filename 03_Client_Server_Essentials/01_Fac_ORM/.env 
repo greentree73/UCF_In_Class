@@ -1,0 +1,7 @@
+DATABASE_NAME=adventure
+DATABASE_USER=postgres
+DATABASE_PASSWORD=root
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_DIALECT=postgres
+DATABASE_URL=postgres://postgres:root@localhost:5432/adventure
