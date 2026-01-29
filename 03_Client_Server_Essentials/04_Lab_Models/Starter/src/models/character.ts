@@ -19,6 +19,10 @@ export class Character extends Model<CharacterAttributes, CharacterCreationAttri
   // Hint: You need to define id, name, class, and level
   // Each one should be public and use the ! operator
   // Example: public id!: number
+   public id!: number
+   public name!: string
+   public class!: string
+   public level!: number
   
 }
 

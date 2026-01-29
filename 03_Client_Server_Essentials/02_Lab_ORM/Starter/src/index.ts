@@ -1,4 +1,5 @@
 import express from 'express';
+import sequelize from "./config/database";
 import dotenv from 'dotenv';
 
 // ...existing code...
@@ -9,20 +10,22 @@ const PORT = process.env.PORT || 4000;
 
 // TODO: Import the Sequelize instance here once implemented
 // Example (after creating src/config/database.ts):
-// import sequelize from './config/database';
+//import sequelize from './config/database';
 
 async function start() {
   try {
-    // TODO: Students should attempt to authenticate with the database here
-    // Example:
-    // await sequelize.authenticate();
-    // console.log('Database connected');
+    // Try to authenticate with the DB
+    await sequelize.authenticate();
+    console.log("Database connection has been established successfully.");
+
+    // Optional: sync({ alter: true }) will create tables based on models (not needed for this exercise)
+    // await sequelize.sync();
 
     app.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
     });
-  } catch (err) {
-    console.error('Failed to start server:', err);
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
     process.exit(1);
   }
 }

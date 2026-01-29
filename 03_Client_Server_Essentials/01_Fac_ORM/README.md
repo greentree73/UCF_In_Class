@@ -29,7 +29,7 @@ INSERT INTO users (name, email) VALUES ('Knightro', 'knight@ucf.edu');
 
 With an ORM, you write JavaScript/TypeScript like this:
 ```typescript
-const users = await User.findAll({ where: { age: { [Op.gt]: 18 } } });
+m n                                                           
 const user = await User.create({ name: 'Knightro', email: 'knight@ucf.edu' });
 ```
 

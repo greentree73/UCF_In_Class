@@ -7,20 +7,23 @@
 // 4) Export the instance as default
 
 // Example (commented):
-/*
-import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
+
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+
 dotenv.config();
 
 const databaseUrl = process.env.DATABASE_URL;
-if (!databaseUrl) throw new Error('DATABASE_URL not set in .env');
 
-const sequelize = new Sequelize(databaseUrl, { dialect: 'postgres' });
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL is not set in .env");
+}
+
+// If your DATABASE_URL uses SSL (for hosted DBs), you may need to adjust options.
+export const sequelize = new Sequelize(databaseUrl, {
+  dialect: "postgres",
+  logging: false, // set to console.log to see SQL queries
+  // dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
+});
+
 export default sequelize;
-*/
-
-// For this starter, we export a placeholder to avoid runtime errors until students implement it.
-// Students should replace the placeholder with the real Sequelize instance.
-
-const placeholder = null as unknown as any;
-export default placeholder;

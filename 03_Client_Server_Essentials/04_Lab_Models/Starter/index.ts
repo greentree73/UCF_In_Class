@@ -15,8 +15,8 @@ async function start() {
   try {
     // TODO: Students should attempt to authenticate with the database here
     // Example:
-    // await sequelize.authenticate();
-    // console.log('Database connected');
+    await sequelize.authenticate();
+    console.log('Database connected');
 
     app.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
