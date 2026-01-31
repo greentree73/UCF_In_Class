@@ -40,6 +40,31 @@ router.post('/users', async (req, res) => {
 
 // Your code here
 
+// Update user
+router.put('/users/:id', async (req, res) => {
+  try {
+    // Extract the id from request parameters
+    const { id } = req.params
+    
+    // Find the user by primary key
+    const user = await User.findByPk(id)
+    
+    // Check if user exists
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    
+    // Update user with data from request body
+    const { username, email } = req.body
+    await user.update({ username, email })
+    
+    // Return the updated user
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update user' })
+  }
+})
+
 
 // ========================================
 // TODO: Implement DELETE Route
@@ -59,6 +84,29 @@ router.post('/users', async (req, res) => {
 // ========================================
 
 // Your code here
+router.delete('/users/:id', async (req, res) => {
+  try {
+    // Extract the id from request parameters
+    const { id } = req.params
+    
+    // Find the user by primary key
+    const user = await User.findByPk(id)
+    
+    // Check if user exists
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    
+    // Delete the user
+    await user.destroy()
+    
+    // Return success message
+    res.status(200).json({ message: 'User deleted successfully' })
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete user' })
+  }
+});
+
 
 
 export default router

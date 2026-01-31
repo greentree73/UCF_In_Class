@@ -8,3 +8,5 @@ export const sequelize = new Sequelize({
   storage: process.env.DB_STORAGE || './database.sqlite',
   logging: false,
 })
+
+export default sequelize;

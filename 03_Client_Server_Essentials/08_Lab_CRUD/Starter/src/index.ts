@@ -15,7 +15,8 @@ async function start() {
   try {
     await sequelize.authenticate()
     console.log('Database connection has been established successfully.')
-    await sequelize.sync({ force: true })
+    await sequelize.sync({ force: false, alter: true  
+     })
     app.listen(port, () => {
       console.log(`Server listening on http://localhost:${port}`)
     })
