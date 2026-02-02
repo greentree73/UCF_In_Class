@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { User } from '../models'
+import bcrypt from "bcrypt";
 
 
 const router = Router()
@@ -42,12 +43,14 @@ router.post('/users', async (req, res) => {
     }
     
     // Get the number of salt rounds from environment or use default
-    
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || "10");
     
     // Hash the password using bcrypt
     // bcrypt.hash() does two things:
     // 1. Generate a random salt
     // 2. Hash the password with that salt
+
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     
     
     console.log(`🔒 Password hashed in route layer`)
@@ -63,8 +66,8 @@ router.post('/users', async (req, res) => {
     const user = await User.create({
       username,
       email,
-      password, // Pass the hashed password, not the plain text
-    })
+      password: hashedPassword, // Pass the hashed password, not the plain text
+    });
     
     console.log(`✅ User created with hashed password`)
     

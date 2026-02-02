@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize'
 import { sequelize } from '../config/database'
 
 // TODO: Import bcrypt library here
+import bcrypt from 'bcrypt'
 
 
 // ========================================
@@ -133,8 +134,20 @@ User.init(
         // 1. Get salt rounds from environment (or default to 10)
         // 2. Hash the user.password using bcrypt
         // 3. Replace user.password with the hashed version
-        
+        // In the model
+        // Get salt rounds from environment or use default
+        const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || '10')
+  
+       // Hash the password
+       const hashedPassword = await bcrypt.hash(user.password, saltRounds)
+  
+        // Replace the plain password with the hash
+        user.password = hashedPassword
+  
+        console.log(`🔒 Password hashed in beforeCreate hook`)
       },
+        
+      
 
       /**
        * beforeUpdate Hook
@@ -150,9 +163,17 @@ User.init(
         // 1. Check if password field was modified using user.changed('password')
         // 2. If changed, hash the new password
         // 3. Replace user.password with the hashed version
-        
-      },
-    },
+         // Only hash if the password was actually changed
+         // Only hash if the password was actually changed
+         if (user.changed('password')) {
+          const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || '10')
+          const hashedPassword = await bcrypt.hash(user.password, saltRounds)
+          user.password = hashedPassword
+    
+          console.log(`🔒 Password hashed in beforeUpdate hook`)
+         }
+       },
+  }
   }
 )
 

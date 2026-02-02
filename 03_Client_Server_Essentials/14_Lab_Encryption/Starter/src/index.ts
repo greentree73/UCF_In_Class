@@ -32,7 +32,7 @@ async function start() {
     // Sync database (create tables)
     // force: true drops existing tables and recreates them
     // Change to { force: false } in production to preserve data
-    await sequelize.sync({ force: true })
+    await sequelize.sync({ force: false })
     console.log('✓ Database synchronized.')
     
     // Start listening for requests
