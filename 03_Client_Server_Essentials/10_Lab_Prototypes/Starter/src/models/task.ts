@@ -48,10 +48,19 @@ export class Task
     // Your code here
     if (!this.completed && this.dueDate < new Date()) {
       return true;
-    }
-    else {
+    } else {
       return false;
-    } 
+    }
+  }
+
+  public getStatus(): string {
+    if (this.completed) {
+      return "Completed";
+    }
+    if (this.isOverdue()) {
+      return "Overdue";
+    }
+    return "Pending";
   }
 }
 
