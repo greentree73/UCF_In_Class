@@ -1,0 +1,23 @@
+{
+  "name": "12-lab-mongoose",
+  "version": "1.0.0",
+  "description": "Mongoose ODM Lab - Ecommerce Product Management",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "keywords": ["mongodb", "mongoose", "odm", "ecommerce"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
