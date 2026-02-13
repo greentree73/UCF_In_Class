@@ -218,21 +218,24 @@ app.get('/products', async (req, res) => {
 // Documentation: https://mongodb.github.io/node-mongodb-native/6.0/classes/FindCursor.html#sort
 app.get('/products/sort', async (req, res) => {
 	try {
-		const db = await connect();
-		
-		// TODO: Complete this query
-		// 1. Query the 'products' collection
-		// 2. Use .sort() to sort by price in ascending order (1 = ascending, -1 = descending)
-		// 3. Convert the cursor to an array using .toArray()
-		
-		const products = [] // Replace this line with your query
-		
-		res.json({ 
-			message: 'Products sorted by price',
-			count: products.length,
-			products 
-		});
-	} catch (err) {
+    const db = await connect();
+
+    // TODO: Complete this query
+    // 1. Query the 'products' collection
+    // 2. Use .sort() to sort by price in ascending order (1 = ascending, -1 = descending)
+    // 3. Convert the cursor to an array using .toArray()
+    const products = await db.collection('products')
+     .find()
+     .sort({ price: 1 })
+     .limit(20)
+     .toArray();
+    
+	  res.json({
+      message: "Products sorted by price",
+      count: products.length,
+      products,
+    });
+  } catch (err) {
 		console.error(err);
 		res.status(500).json({ message: 'Error sorting products' });
 	}
@@ -253,6 +256,14 @@ app.get('/products/fields', async (req, res) => {
 		// 3. Exclude _id by setting it to 0 in the projection
 		// 4. Limit results to 10 products
 		// 5. Convert to array
+		const products = await db.collection('products')
+            .find()
+            .project({ _id: 0, name: 1, price: 1, rating: 1 })
+            .limit(10)
+            .toArray();
+            // TODO: Replace this line with your query for the specific category field (e.g.,.find({ category: req.params.category }))
+            // Note: This query assumes the category field is named 'category' in the 'products' collection
+               // Adjust as needed based on your actual schema and field names.
 		
 		const products = [] // Replace this line with your query
 		

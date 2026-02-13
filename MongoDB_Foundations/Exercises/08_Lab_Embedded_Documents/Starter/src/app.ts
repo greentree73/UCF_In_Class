@@ -167,17 +167,18 @@ app.post('/products/seed', async (req, res) => {
 app.put('/products/:id/manufacturer', async (req, res) => {
 	try {
 		const db = await connect();
-		const id = req.params.id;
+		const id = Number(req.params.id);
 		const { name, location, website, founded } = req.body;
 
 		// TODO: Use updateOne with $set to update the manufacturer subdocument
+
 		// HINT: You need to replace the entire manufacturer object
 		// HINT: Use dot notation or set the entire object
 		// HINT: Check MongoDB documentation for updating embedded documents
-		
 		// Your code here
-		
-		res.json({ message: 'TODO: Implement manufacturer update' });
+		const result = await db.collection("products").updateOne({ _id: new ObjectId(id) }, { $set: { manufacturer: { name, location, website, founded } } });        
+        res.json({ message: 'Manufacturer updated' });
+		res.json({ "modified": result.modifiedCount });
 	} catch (err) {
 		console.error(err);
 		res.status(400).json({ message: 'Error updating manufacturer' });
@@ -193,13 +194,17 @@ app.delete('/products/:id/reviews/:reviewer', async (req, res) => {
 		const reviewer = req.params.reviewer;
 
 		// TODO: Use updateOne with $pull to remove a review from the reviews array
+
 		// HINT: $pull removes elements from an array that match a condition
 		// HINT: You need to match the reviewer field within the reviews array
 		// HINT: Check MongoDB documentation for $pull operator
 		
 		// Your code here
+		const result = await db.collection("products").updateOne({ _id: new ObjectId(id) }, { $pull: { reviews: { reviewer } } });        
+        res.json({ message: 'Review deleted' });
+        res.json({ modified: result.modifiedCount });
 		
-		res.json({ message: 'TODO: Implement review deletion' });
+		
 	} catch (err) {
 		console.error(err);
 		res.status(400).json({ message: 'Error deleting review' });
