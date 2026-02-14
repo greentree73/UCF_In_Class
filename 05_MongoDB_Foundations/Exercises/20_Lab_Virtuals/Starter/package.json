@@ -1,0 +1,31 @@
+{
+  "name": "18-lab-virtuals-starter",
+  "version": "1.0.0",
+  "description": "Starter lab for creating a Mongoose virtual on products",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "keywords": [
+    "mongoose",
+    "virtuals",
+    "mongodb",
+    "express",
+    "typescript"
+  ],
+  "author": "UCF Split Stack Program",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}
