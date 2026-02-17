@@ -1,0 +1,19 @@
+{
+  "name": "hackhaven-rest-intro",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node app.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.13.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
