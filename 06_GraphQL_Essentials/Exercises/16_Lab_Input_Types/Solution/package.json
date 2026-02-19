@@ -1,0 +1,21 @@
+{
+  "name": "movies-input-types-lab-solution",
+  "version": "1.0.0",
+  "description": "GraphQL Input Types Lab - Complete Solution",
+  "main": "src/app.ts",
+  "scripts": {
+    "dev": "ts-node src/app.ts",
+    "seed": "ts-node src/seeds.ts"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.4.0",
+    "express": "^4.19.2",
+    "mongoose": "^9.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.30",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
