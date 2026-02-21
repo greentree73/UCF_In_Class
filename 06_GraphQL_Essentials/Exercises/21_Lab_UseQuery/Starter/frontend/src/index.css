@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+.app-shell {
+  max-width: 640px;
+  margin: 48px auto;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.card {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fafafa;
+  border: 1px solid #ececec;
+}
