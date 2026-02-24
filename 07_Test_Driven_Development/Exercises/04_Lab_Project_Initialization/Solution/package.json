@@ -1,0 +1,37 @@
+{
+  "name": "tdd-fac-03-project-initialization",
+  "version": "1.0.0",
+  "description": "Facilitator demo for setting up Express, Apollo Server, and Mongoose for API testing",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "test": "tsx --test src/**/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "express",
+    "apollo-server",
+    "mongoose",
+    "graphql",
+    "tdd"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "mongoose": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.13.10",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
