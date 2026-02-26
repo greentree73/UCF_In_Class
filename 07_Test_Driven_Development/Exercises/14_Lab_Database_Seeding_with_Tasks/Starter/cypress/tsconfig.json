@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": ["cypress", "node"],
+    "noEmit": true,
+    "outDir": "../dist/cypress"
+  },
+  "include": ["**/*.ts", "../cypress.config.ts"]
+}

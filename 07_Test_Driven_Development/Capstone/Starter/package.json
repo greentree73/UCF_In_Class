@@ -1,0 +1,42 @@
+{
+  "name": "tdd-week07-capstone-recipes-starter",
+  "version": "1.0.0",
+  "description": "Starter capstone: Recipe GraphQL API with tests already written",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "cypress:open": "ELECTRON_DISABLE_GPU=1 cypress open --browser chrome --e2e",
+    "cypress:run": "cypress run",
+    "cypress:run:headed": "cypress run --browser chrome --headed",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "express",
+    "apollo-server",
+    "mongoose",
+    "graphql",
+    "cypress",
+    "tdd"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "mongoose": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.10",
+    "cypress": "^15.11.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
