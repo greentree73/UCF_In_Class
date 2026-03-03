@@ -1,0 +1,45 @@
+name: Dependency Security Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # TODO: Run linting before security checks.
+      - name: Lint code
+        run: npm run lint
+
+      # TODO: Enforce formatting check before audit.
+      - name: Check formatting
+        run: npm run format:check
+
+      # TODO: Run npm audit with high severity threshold.
+      - name: Run npm audit
+        run: npm run audit
+
+      - name: Run Cypress tests
+        run: npm test
+
+      # TODO: Add Snyk scan step and use SNYK_TOKEN secret.
+      - name: Run Snyk scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
