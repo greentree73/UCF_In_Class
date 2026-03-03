@@ -1,0 +1,35 @@
+# Workflow display name shown in the Actions tab.
+name: Node CI
+
+# Triggers: run this workflow on pushes and pull requests targeting main.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Single job that installs dependencies and runs automated tests.
+  test:
+    # Use the latest Ubuntu GitHub-hosted runner.
+    runs-on: ubuntu-latest
+
+    steps:
+      # Pull the repository code into the runner.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install Node.js 20 and enable npm dependency caching for faster runs.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # Install from package-lock.json for reproducible CI installs.
+      - name: Install dependencies
+        run: npm ci
+
+      # Execute the test suite; this must pass before merging.
+      - name: Run tests
+        run: npm test
